@@ -41,9 +41,115 @@
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--bg-deep); }
     ::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+
+    /* ─── LOADER ────────────────────────────────────────── */
+    #loader {
+      position: fixed; inset: 0; z-index: 8000;
+      background: var(--bg-deep);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column;
+      transition: opacity 0.9s cubic-bezier(0.4,0,0.2,1),
+                  visibility 0.9s cubic-bezier(0.4,0,0.2,1);
+    }
+    #loader.loader-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+    .loader-inner { text-align: center; }
+
+    .loader-film {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      margin-bottom: 32px;
+    }
+    .loader-reel {
+      width: 14px; height: 44px;
+      background: var(--text-dim);
+      border-radius: 3px;
+      animation: reel-flicker 0.9s ease-in-out infinite;
+    }
+    .loader-reel:nth-child(1) { animation-delay: 0s; }
+    .loader-reel:nth-child(2) { height: 28px; animation-delay: 0.15s; }
+    .loader-reel:nth-child(3) { height: 36px; animation-delay: 0.3s; }
+    .loader-reel:nth-child(4) { height: 22px; animation-delay: 0.45s; }
+    .loader-reel:nth-child(5) { height: 40px; animation-delay: 0.6s; }
+    .loader-reel:nth-child(6) { height: 30px; animation-delay: 0.75s; }
+    .loader-reel:nth-child(7) { height: 44px; animation-delay: 0.9s; }
+    @keyframes reel-flicker {
+      0%, 100% { background: var(--text-dim); transform: scaleY(1); }
+      50%       { background: var(--gold);     transform: scaleY(0.6); }
+    }
+
+    .loader-title-wrap { margin-bottom: 6px; }
+    .loader-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 8vw, 5rem);
+      color: var(--text-bright);
+      letter-spacing: 0.1em;
+      line-height: 0.95;
+    }
+    .loader-title .lt-gold { color: var(--gold); }
+
+    .loader-sub {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 44px;
+    }
+
+    .loader-bar-track {
+      width: 220px; height: 1px;
+      background: var(--text-dim);
+      margin: 0 auto 14px;
+      position: relative; overflow: hidden;
+    }
+    .loader-bar-fill {
+      position: absolute; top: 0; left: 0;
+      height: 100%; background: var(--gold);
+      width: 0;
+      animation: bar-grow 2.3s cubic-bezier(0.4,0,0.2,1) forwards;
+      box-shadow: 0 0 8px var(--gold);
+    }
+    @keyframes bar-grow { to { width: 100%; } }
+
+    .loader-caption {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      opacity: 0;
+      animation: fade-up 0.6s 0.4s forwards;
+    }
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
+
+<!-- ─── LOADER ────────────────────────────────────────── -->
+<div id="loader">
+  <div class="loader-inner">
+    <div class="loader-film">
+      <div class="loader-reel"></div>
+      <div class="loader-reel"></div>
+      <div class="loader-reel"></div>
+      <div class="loader-reel"></div>
+      <div class="loader-reel"></div>
+      <div class="loader-reel"></div>
+      <div class="loader-reel"></div>
+    </div>
+    <div class="loader-title-wrap">
+      <div class="loader-title"><span class="lt-gold">IMDb</span> Analytics</div>
+    </div>
+    <div class="loader-sub">Top 1000 Movies · Data Visualization</div>
+    <div class="loader-bar-track">
+      <div class="loader-bar-fill"></div>
+    </div>
+    <div class="loader-caption">Preparing cinematic experience…</div>
+  </div>
+</div>
 
 </body>
 </html>
