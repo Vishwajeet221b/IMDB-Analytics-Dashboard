@@ -35,6 +35,58 @@
       font-family: var(--font-body);
       font-size: 18px;
       overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ─── CURSOR FIX ────────────────────────────────────── */
+    *,
+    a, a:hover, a:visited, a:active, a:focus,
+    button, button:hover, button:active, button:focus,
+    input, textarea, select, label,
+    [role="button"], [tabindex] {
+      cursor: none !important;
+    }
+
+    /* ─── CUSTOM CURSOR ─────────────────────────────────── */
+    #cursor-dot {
+      position: fixed; top: 0; left: 0; z-index: 9999;
+      width: 8px; height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: transform 0.05s;
+    }
+    #cursor-ring {
+      position: fixed; top: 0; left: 0; z-index: 9998;
+      width: 34px; height: 34px;
+      border: 1.5px solid rgba(245,197,24,0.5);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: transform 0.15s ease, width 0.2s, height 0.2s, border-color 0.2s;
+    }
+    body:has(a:hover) #cursor-ring,
+    body:has(button:hover) #cursor-ring {
+      width: 52px; height: 52px;
+      border-color: var(--gold);
+    }
+
+    /* ─── GRAIN OVERLAY ─────────────────────────────────── */
+    #grain {
+      position: fixed; inset: 0; z-index: 1000;
+      pointer-events: none;
+      opacity: 0.038;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px;
+      animation: grain-shift 0.5s steps(2) infinite;
+    }
+    @keyframes grain-shift {
+      0%   { transform: translate(0, 0); }
+      25%  { transform: translate(-3px, 2px); }
+      50%  { transform: translate(2px, -3px); }
+      75%  { transform: translate(-1px, 4px); }
+      100% { transform: translate(3px, -1px); }
     }
 
     /* ─── SCROLLBAR ─────────────────────────────────────── */
@@ -52,9 +104,7 @@
                   visibility 0.9s cubic-bezier(0.4,0,0.2,1);
     }
     #loader.loader-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-
     .loader-inner { text-align: center; }
-
     .loader-film {
       display: flex; align-items: center; justify-content: center; gap: 6px;
       margin-bottom: 32px;
@@ -76,7 +126,6 @@
       0%, 100% { background: var(--text-dim); transform: scaleY(1); }
       50%       { background: var(--gold);     transform: scaleY(0.6); }
     }
-
     .loader-title-wrap { margin-bottom: 6px; }
     .loader-title {
       font-family: var(--font-display);
@@ -86,7 +135,6 @@
       line-height: 0.95;
     }
     .loader-title .lt-gold { color: var(--gold); }
-
     .loader-sub {
       font-family: var(--font-mono);
       font-size: 0.65rem;
@@ -95,7 +143,6 @@
       color: var(--text-dim);
       margin-bottom: 44px;
     }
-
     .loader-bar-track {
       width: 220px; height: 1px;
       background: var(--text-dim);
@@ -110,7 +157,6 @@
       box-shadow: 0 0 8px var(--gold);
     }
     @keyframes bar-grow { to { width: 100%; } }
-
     .loader-caption {
       font-family: var(--font-mono);
       font-size: 0.58rem;
@@ -150,6 +196,13 @@
     <div class="loader-caption">Preparing cinematic experience…</div>
   </div>
 </div>
+
+<!-- Custom Cursor -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- Film Grain Overlay -->
+<div id="grain"></div>
 
 </body>
 </html>
