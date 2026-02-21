@@ -14,8 +14,8 @@
       --border:rgba(245,197,24,0.12); --radius:14px;
       --font-display:'Bebas Neue',sans-serif; --font-body:'Cormorant Garamond',serif; --font-mono:'DM Mono',monospace;
     }
-    html { scroll-behavior: smooth; }
-    body { background:var(--bg-deep); color:var(--text-bright); font-family:var(--font-body); font-size:18px; overflow-x:hidden; cursor:none; }
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg-deep);color:var(--text-bright);font-family:var(--font-body);font-size:18px;overflow-x:hidden;cursor:none;}
     *,a,a:hover,a:visited,a:active,a:focus,button,button:hover,button:active,button:focus,input,textarea,select,label,[role="button"],[tabindex]{cursor:none !important;}
     #cursor-dot{position:fixed;top:0;left:0;z-index:9999;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);transition:transform 0.05s;}
     #cursor-ring{position:fixed;top:0;left:0;z-index:9998;width:34px;height:34px;border:1.5px solid rgba(245,197,24,0.5);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);transition:transform 0.15s ease,width 0.2s,height 0.2s,border-color 0.2s;}
@@ -23,7 +23,6 @@
     #grain{position:fixed;inset:0;z-index:1000;pointer-events:none;opacity:0.038;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;animation:grain-shift 0.5s steps(2) infinite;}
     @keyframes grain-shift{0%{transform:translate(0,0);}25%{transform:translate(-3px,2px);}50%{transform:translate(2px,-3px);}75%{transform:translate(-1px,4px);}100%{transform:translate(3px,-1px);}}
     ::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:var(--bg-deep);} ::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:2px;}
-    /* Loader */
     #loader{position:fixed;inset:0;z-index:8000;background:var(--bg-deep);display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1),visibility 0.9s cubic-bezier(0.4,0,0.2,1);}
     #loader.loader-hidden{opacity:0;visibility:hidden;pointer-events:none;}
     .loader-inner{text-align:center;}
@@ -37,7 +36,6 @@
     .loader-bar-fill{position:absolute;top:0;left:0;height:100%;background:var(--gold);width:0;animation:bar-grow 2.3s cubic-bezier(0.4,0,0.2,1) forwards;box-shadow:0 0 8px var(--gold);}
     @keyframes bar-grow{to{width:100%;}}
     .loader-caption{font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-dim);opacity:0;animation:fade-up 0.6s 0.4s forwards;}
-    /* Nav */
     nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:20px 6vw;background:linear-gradient(to bottom,rgba(7,7,13,0.95),transparent);backdrop-filter:blur(4px);}
     .nav-logo{font-family:var(--font-display);font-size:1.4rem;letter-spacing:0.12em;color:var(--gold);}
     .nav-logo span{color:var(--text-muted);font-size:0.75rem;display:block;font-family:var(--font-mono);font-weight:300;letter-spacing:0.3em;margin-top:-4px;}
@@ -45,30 +43,10 @@
     .nav-links a{font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;position:relative;transition:color 0.3s;}
     .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width 0.3s;}
     .nav-links a:hover{color:var(--gold);}.nav-links a:hover::after{width:100%;}
-
-    /* ─── HERO ──────────────────────────────────────────── */
-    #hero {
-      position: relative; min-height: 100vh;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      overflow: hidden; text-align: center;
-      padding: 100px 6vw 160px;
-    }
-    .hero-spotlight {
-      position: absolute; inset: 0; z-index: 0;
-      background:
-        radial-gradient(ellipse 70% 55% at 50% 40%, rgba(245,197,24,0.07) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 30% at 30% 70%, rgba(100,80,200,0.06) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 40% at 75% 20%, rgba(200,60,60,0.04) 0%, transparent 60%);
-    }
-    .scanlines {
-      position: absolute; inset: 0; z-index: 0; pointer-events: none;
-      background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.08) 3px, rgba(0,0,0,0.08) 4px);
-    }
-    .hero-ring {
-      position: absolute; border-radius: 50%; border: 1px solid;
-      animation: ring-pulse 8s ease-in-out infinite;
-    }
+    #hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;text-align:center;padding:100px 6vw 160px;}
+    .hero-spotlight{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 70% 55% at 50% 40%,rgba(245,197,24,0.07) 0%,transparent 70%),radial-gradient(ellipse 40% 30% at 30% 70%,rgba(100,80,200,0.06) 0%,transparent 70%),radial-gradient(ellipse 50% 40% at 75% 20%,rgba(200,60,60,0.04) 0%,transparent 60%);}
+    .scanlines{position:absolute;inset:0;z-index:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.08) 3px,rgba(0,0,0,0.08) 4px);}
+    .hero-ring{position:absolute;border-radius:50%;border:1px solid;animation:ring-pulse 8s ease-in-out infinite;}
     .hero-ring:nth-child(1){width:500px;height:500px;border-color:rgba(245,197,24,0.06);animation-delay:0s;top:-80px;right:-100px;}
     .hero-ring:nth-child(2){width:700px;height:700px;border-color:rgba(245,197,24,0.04);animation-delay:-2s;top:-200px;right:-250px;}
     .hero-ring:nth-child(3){width:300px;height:300px;border-color:rgba(245,197,24,0.05);animation-delay:-4s;bottom:60px;left:-60px;}
@@ -85,6 +63,16 @@
     .hero-cta::before{content:'';position:absolute;inset:0;background:var(--gold);transform:translateX(-101%);transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);}
     .hero-cta:hover{color:var(--bg-deep);}.hero-cta:hover::before{transform:translateX(0);}
     .hero-cta span{position:relative;z-index:1;}.hero-cta svg{position:relative;z-index:1;transition:transform 0.3s;}.hero-cta:hover svg{transform:translateX(4px);}
+
+    /* ─── HERO STATS & SCROLL HINT ──────────────────────── */
+    .hero-stats{display:flex;gap:52px;margin-top:52px;justify-content:center;opacity:0;animation:fade-up 1s 1.3s forwards;}
+    .hero-stat{text-align:center;}
+    .hero-stat-num{font-family:var(--font-display);font-size:2.8rem;color:var(--gold);line-height:1;}
+    .hero-stat-label{font-family:var(--font-mono);font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--text-dim);margin-top:4px;}
+    .hero-scroll-hint{position:absolute;bottom:44px;left:0;right:0;width:max-content;margin-left:auto;margin-right:auto;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fade-up 1s 1.8s forwards;z-index:3;}
+    .hero-scroll-hint span{font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-dim);}
+    .scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scroll-line-anim 2s ease-in-out infinite;}
+    @keyframes scroll-line-anim{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform:scaleY(1);transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
     @keyframes fade-up{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
   </style>
 </head>
@@ -103,34 +91,23 @@
     <div class="loader-caption">Preparing cinematic experience…</div>
   </div>
 </div>
-<div id="cursor-dot"></div>
-<div id="cursor-ring"></div>
-<div id="grain"></div>
+<div id="cursor-dot"></div><div id="cursor-ring"></div><div id="grain"></div>
 
 <nav>
   <div class="nav-logo">IMDb<br><span>Analytics</span></div>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#methodology">Methodology</a></li>
-    <li><a href="#dataset">Dataset</a></li>
-    <li><a href="#tools">Tools</a></li>
-    <li><a href="#dashboard">Dashboard</a></li>
-    <li><a href="#insights">Insights</a></li>
+    <li><a href="#about">About</a></li><li><a href="#methodology">Methodology</a></li>
+    <li><a href="#dataset">Dataset</a></li><li><a href="#tools">Tools</a></li>
+    <li><a href="#dashboard">Dashboard</a></li><li><a href="#insights">Insights</a></li>
   </ul>
 </nav>
 
-<!-- ─── HERO ─────────────────────────────────────────── -->
 <section id="hero">
-  <div class="hero-ring"></div>
-  <div class="hero-ring"></div>
-  <div class="hero-ring"></div>
-  <div class="hero-spotlight"></div>
-  <div class="scanlines"></div>
+  <div class="hero-ring"></div><div class="hero-ring"></div><div class="hero-ring"></div>
+  <div class="hero-spotlight"></div><div class="scanlines"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">Data Visualization Project</div>
-    <h1 class="hero-title">
-      <span class="gold">IMDb</span><br>Analytics<br>Dashboard
-    </h1>
+    <h1 class="hero-title"><span class="gold">IMDb</span><br>Analytics<br>Dashboard</h1>
     <div class="hero-subtitle-line"></div>
     <p class="hero-subtitle">Insights from the Top 1000 Movies of All Time</p>
     <a href="#dashboard" class="hero-cta">
@@ -139,6 +116,16 @@
         <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </a>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">1K</div><div class="hero-stat-label">Movies</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">90+</div><div class="hero-stat-label">Years</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">50+</div><div class="hero-stat-label">Genres</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">4+</div><div class="hero-stat-label">Insights</div></div>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
   </div>
 </section>
 
