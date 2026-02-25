@@ -25,8 +25,7 @@
     ::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:var(--bg-deep);} ::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:2px;}
     #loader{position:fixed;inset:0;z-index:8000;background:var(--bg-deep);display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1),visibility 0.9s cubic-bezier(0.4,0,0.2,1);}
     #loader.loader-hidden{opacity:0;visibility:hidden;pointer-events:none;}
-    .loader-inner{text-align:center;}
-    .loader-film{display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:32px;}
+    .loader-inner{text-align:center;}.loader-film{display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:32px;}
     .loader-reel{width:14px;height:44px;background:var(--text-dim);border-radius:3px;animation:reel-flicker 0.9s ease-in-out infinite;}
     .loader-reel:nth-child(1){animation-delay:0s;}.loader-reel:nth-child(2){height:28px;animation-delay:0.15s;}.loader-reel:nth-child(3){height:36px;animation-delay:0.3s;}.loader-reel:nth-child(4){height:22px;animation-delay:0.45s;}.loader-reel:nth-child(5){height:40px;animation-delay:0.6s;}.loader-reel:nth-child(6){height:30px;animation-delay:0.75s;}.loader-reel:nth-child(7){height:44px;animation-delay:0.9s;}
     @keyframes reel-flicker{0%,100%{background:var(--text-dim);transform:scaleY(1);}50%{background:var(--gold);transform:scaleY(0.6);}}
@@ -62,18 +61,36 @@
     .hero-cta{display:inline-flex;align-items:center;gap:10px;padding:14px 36px;border:1px solid var(--gold);color:var(--gold);font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;text-decoration:none;position:relative;overflow:hidden;transition:color 0.35s;opacity:0;animation:fade-up 1s 1.1s forwards;}
     .hero-cta::before{content:'';position:absolute;inset:0;background:var(--gold);transform:translateX(-101%);transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);}
     .hero-cta:hover{color:var(--bg-deep);}.hero-cta:hover::before{transform:translateX(0);}
-    .hero-cta span{position:relative;z-index:1;}.hero-cta svg{position:relative;z-index:1;transition:transform 0.3s;}.hero-cta:hover svg{transform:translateX(4px);}
-
-    /* ─── HERO STATS & SCROLL HINT ──────────────────────── */
+    .hero-cta span,.hero-cta svg{position:relative;z-index:1;}.hero-cta svg{transition:transform 0.3s;}.hero-cta:hover svg{transform:translateX(4px);}
     .hero-stats{display:flex;gap:52px;margin-top:52px;justify-content:center;opacity:0;animation:fade-up 1s 1.3s forwards;}
-    .hero-stat{text-align:center;}
-    .hero-stat-num{font-family:var(--font-display);font-size:2.8rem;color:var(--gold);line-height:1;}
+    .hero-stat{text-align:center;}.hero-stat-num{font-family:var(--font-display);font-size:2.8rem;color:var(--gold);line-height:1;}
     .hero-stat-label{font-family:var(--font-mono);font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--text-dim);margin-top:4px;}
     .hero-scroll-hint{position:absolute;bottom:44px;left:0;right:0;width:max-content;margin-left:auto;margin-right:auto;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fade-up 1s 1.8s forwards;z-index:3;}
     .hero-scroll-hint span{font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-dim);}
     .scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scroll-line-anim 2s ease-in-out infinite;}
     @keyframes scroll-line-anim{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform:scaleY(1);transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
     @keyframes fade-up{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+
+    /* ─── SECTION COMMON ────────────────────────────────── */
+    section{position:relative;}
+    .section-inner{max-width:1100px;margin:0 auto;padding:110px 6vw;}
+    .section-label{font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:flex;align-items:center;gap:14px;}
+    .section-label::before{content:'';display:inline-block;width:28px;height:1px;background:var(--gold);}
+    .section-title{font-family:var(--font-display);font-size:clamp(2.6rem,5vw,4.2rem);letter-spacing:0.04em;line-height:1;color:var(--text-bright);}
+
+    /* ─── ABOUT SECTION ─────────────────────────────────── */
+    #about{background:var(--bg-dark);}
+    #about::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--gold-dim),transparent);}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:56px;}
+    .about-text p{font-size:1.18rem;font-weight:300;line-height:1.85;color:#b0adca;margin-bottom:20px;}
+    .about-text p strong{color:var(--text-bright);font-weight:600;}
+    .about-text em{color:var(--gold);font-style:italic;}
+    .about-cards{display:flex;flex-direction:column;gap:18px;}
+    .about-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;display:flex;align-items:flex-start;gap:18px;transition:border-color 0.3s,transform 0.3s;}
+    .about-card:hover{border-color:rgba(245,197,24,0.35);transform:translateX(6px);}
+    .about-card-icon{font-size:1.6rem;line-height:1;flex-shrink:0;margin-top:2px;}
+    .about-card-title{font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
+    .about-card-desc{font-size:0.95rem;font-weight:300;color:var(--text-muted);line-height:1.65;}
   </style>
 </head>
 <body>
@@ -112,9 +129,7 @@
     <p class="hero-subtitle">Insights from the Top 1000 Movies of All Time</p>
     <a href="#dashboard" class="hero-cta">
       <span>Explore Dashboard</span>
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-        <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
     <div class="hero-stats">
       <div class="hero-stat"><div class="hero-stat-num">1K</div><div class="hero-stat-label">Movies</div></div>
@@ -123,9 +138,35 @@
       <div class="hero-stat"><div class="hero-stat-num">4+</div><div class="hero-stat-label">Insights</div></div>
     </div>
   </div>
-  <div class="hero-scroll-hint">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
+  <div class="hero-scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- ─── ABOUT ─────────────────────────────────────────── -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label reveal">01 — About Project</div>
+    <h2 class="section-title reveal reveal-delay-1">What This<br>Dashboard Does</h2>
+    <div class="about-grid">
+      <div class="about-text reveal reveal-delay-2">
+        <p>This project presents a comprehensive visual analysis of the <strong>IMDb Top 1000 Movies dataset</strong>, transforming raw data into a rich, interactive storytelling experience.</p>
+        <p>Built using <em>Tableau Public</em>, the dashboard explores relationships between ratings, genres, release years, gross revenue, and runtime — uncovering patterns hidden in decades of cinematic history.</p>
+        <p>Whether you're a film enthusiast, data analyst, or researcher, this dashboard provides an intuitive lens into what makes a movie <strong>truly great</strong>.</p>
+      </div>
+      <div class="about-cards">
+        <div class="about-card reveal reveal-delay-1">
+          <div class="about-card-icon">🎬</div>
+          <div><div class="about-card-title">Dataset</div><div class="about-card-desc">IMDb Top 1000 Movies — ratings, gross, genre, director, cast & more</div></div>
+        </div>
+        <div class="about-card reveal reveal-delay-2">
+          <div class="about-card-icon">📊</div>
+          <div><div class="about-card-title">Tool</div><div class="about-card-desc">Tableau Public — interactive filters, drill-downs, and dynamic charts</div></div>
+        </div>
+        <div class="about-card reveal reveal-delay-3">
+          <div class="about-card-icon">🔍</div>
+          <div><div class="about-card-title">Goal</div><div class="about-card-desc">Reveal trends in cinema — from genre evolution to box office dominance</div></div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
