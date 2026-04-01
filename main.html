@@ -38,6 +38,17 @@
       cursor: none;
     }
 
+    /* ─── CURSOR FIX ────────────────────────────────────── */
+    /* Force custom cursor on ALL elements — prevents browser
+       from restoring the default pointer on links / buttons  */
+    *,
+    a, a:hover, a:visited, a:active, a:focus,
+    button, button:hover, button:active, button:focus,
+    input, textarea, select, label,
+    [role="button"], [tabindex] {
+      cursor: none !important;
+    }
+
     /* ─── CUSTOM CURSOR ─────────────────────────────────── */
     #cursor-dot {
       position: fixed; top: 0; left: 0; z-index: 9999;
@@ -1146,6 +1157,11 @@
       .footer-info { text-align: left; }
       #cursor-dot, #cursor-ring { display: none; }
       body { cursor: auto; }
+      /* Restore default cursors on mobile where custom cursor is hidden */
+      *, *::before, *::after,
+      a, button, input, textarea, select, label,
+      [role="button"], [tabindex] { cursor: auto !important; }
+      a, a:hover, button, button:hover { cursor: pointer !important; }
       .methodology-steps { flex-direction: column; align-items: center; gap: 36px; }
       .methodology-steps::before { display: none; }
       .step-arrow { display: none; }
@@ -1708,7 +1724,8 @@
       }
     }, 2600);
   });
-  /* Custom Cursor */
+
+  /* ── Custom Cursor ── */
   const dot  = document.getElementById('cursor-dot');
   const ring = document.getElementById('cursor-ring');
   let mx = 0, my = 0, rx = 0, ry = 0;
@@ -1725,7 +1742,7 @@
     requestAnimationFrame(animRing);
   })();
 
-  /* Scroll Reveal */
+  /* ── Scroll Reveal ── */
   const revealEls = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -1737,7 +1754,7 @@
   }, { threshold: 0.12 });
   revealEls.forEach(el => observer.observe(el));
 
-  /* Nav background on scroll */
+  /* ── Nav background on scroll ── */
   const nav = document.querySelector('nav');
   window.addEventListener('scroll', () => {
     nav.style.background = window.scrollY > 60
@@ -1745,7 +1762,7 @@
       : 'linear-gradient(to bottom, rgba(7,7,13,0.95), transparent)';
   });
 
-  /* Counter animation for hero stats */
+  /* ── Counter animation for hero stats ── */
   function animateCounter(el, target, suffix = '') {
     let start = 0;
     const duration = 1800;
@@ -1760,7 +1777,7 @@
     requestAnimationFrame(step);
   }
 
-  /* Trigger counter when hero-stats visible */
+  /* ── Trigger counter when hero-stats visible ── */
   const statsObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
